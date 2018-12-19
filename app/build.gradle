@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        liyang {
+            keyAlias 'liyang'
+            keyPassword 'liyang'
+            storeFile file('E:/android-studio/sign/key.jks')
+            storePassword 'liyang'
+        }
+    }
+    compileSdkVersion 22
+    defaultConfig {
+        applicationId "com.liyang.encodevideo"
+        minSdkVersion 20
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar','*.aar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:22.1.1'
+    implementation 'com.android.support:design:22.2.1'
+    implementation files('libs/junit-4.12.jar')
+    implementation 'com.android.support:recyclerview-v7:22.2.1'
+}
